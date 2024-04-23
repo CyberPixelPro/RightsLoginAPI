@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from db import is_user_exist
+import uvicorn
 
 app = FastAPI()
 
@@ -33,3 +34,7 @@ async def login(request: Request):
     except Exception as e:
         print(e)
         return {"status": "failed"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
